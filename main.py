@@ -166,6 +166,9 @@ class MazeSolverApp:
         self.canvas = tk.Canvas(self.maze_frame, width=width, height=height, bg="white")
         self.canvas.pack(fill=tk.BOTH, expand=True)
 
+        self.regenerate_button = tk.Button(self.button_frame, text="Regenerate Maze", command=self.regenerate_maze)
+        self.regenerate_button.pack(side=tk.TOP, padx=5, pady=5)
+
         self.width = width
         self.height = height
         self.cell_size = 20
@@ -186,6 +189,10 @@ class MazeSolverApp:
 
         self.canvas.bind("<Button-1>", self.draw_obstacle)
 
+    def regenerate_maze(self):
+        self.clear_maze()
+        self.create_maze()
+        self.draw_grid()
     def create_buttons(self):
         # Define button packing options
         button_pack_options = {'side': tk.TOP, 'padx': 5, 'pady': 5, 'expand': True}
